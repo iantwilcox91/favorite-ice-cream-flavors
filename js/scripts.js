@@ -17,9 +17,8 @@ $(function(){
 
   $("button.submitIt").click(function(event){
     $("form#groceryForm").hide();
-
-    $("button.submitIt").hide();
-
+    $("ul#groceryList").empty();
+// EMPTY is how you clear all the child elements
     var arrayitems = ["item1","item2","item3","item4","item5","item6","item7","item8"];
     var tempItemArray =[];
     arrayitems.forEach(function(item){
@@ -33,6 +32,24 @@ $(function(){
 
     tempItemArrayCap.forEach(function(item){
       $("ul#groceryList").append("<li>"+item+"</li>");
+
     });
+  });
+
+  //For sentence.html
+  $("#buttonSubmit").click(function(event){
+    var sentenceString = $("#userSentence").val();
+    var sentenceArray = sentenceString.split(" ");
+    var longWords = [];
+    sentenceArray.forEach(function(word){
+      if (word.length > 2) {
+        longWords.push(word);
+      }
+    });
+    longWords.reverse();
+    alert(longWords);
+
+    event.preventDefault();
+    // var newSentence = $("#userSetence").split(" ");
   });
 });
